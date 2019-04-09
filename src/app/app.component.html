@@ -1,22 +1,66 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+  <h4>
+    Gestion du SLS
+  </h4>
   <hr>
-  <app-header></app-header>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#">Étape A</a></li>
+  <li class="breadcrumb-item"><a href="#">Étape B</a></li>
+  <li class="breadcrumb-item active">Occupant 1</li>
+  <li class="breadcrumb-item"><a href="#">Occupant 2</a></li>
+  <li class="breadcrumb-item"><a href="#">Occupant 3</a></li>
+  <li class="breadcrumb-item"><a href="#">Étape C</a></li>
+  <li class="breadcrumb-item"><a href="#">Étape D</a></li>
+</ol>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="card text-white border-primary mb-3" style="max-width: 30rem;">
+      <div class="card-header">Données connues</div>
+      <div class="card-body">
+        <h4 class="card-title">État civil</h4>
+        <p class="card-text">Nom : {{Nom}}<br>
+          Prénom : {{Prenom}}<br>
+          Date de naissance : {{DateDeNaissance | date: 'dd/MM/yyyy'}}</p>
+        <button class="btn btn-primary" (click)="onModifier()">Modifier</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card text-white border-success mb-3" style="max-width: 30rem;" [hidden]="finalHidden">
+      <div class="card-header">Donées modifiées</div>
+      <div class="card-body">
+        <h4 class="card-title">État civil</h4>
+        <p class="card-text">Nom : {{NomModif}}<br>
+          Prénom : {{PrenomModif}}<br>
+          Date de naissance : {{DateDeNaissanceModif | date: 'dd/MM/yyyy'}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="card text-white border-warning mb-3" style="max-width: 50rem;" [hidden]="modificationHidden">
+    <div class="card-header">Modification des données</div>
+    <div class="card-body">
+      <h4 class="card-title">État civil</h4>
+      <div class="form-group">
+        <label class="col-form-label" for="inputDefault">Nom</label>
+        <input type="text" class="form-control" placeholder={{NomModif}} id="inputDefault" [(ngModel)]=NomModif>
+
+        <label class="col-form-label" for="inputDefault">Prénom</label>
+        <input type="text" class="form-control" placeholder={{PrenomModif}} id="inputDefault" [(ngModel)]=PrenomModif>
+        <label class="col-form-label" for="inputDefault">Date de naissance</label>
+
+        <input type="date" class="form-control" placeholder={{DateDeNaissanceModif}} id="inputDefault"
+          [(ngModel)]=DateDeNaissanceModif>
+      </div>
+      <button class="btn btn-warning" (click)="onValider()">Valider</button><br>
+      
+      <button class="btn btn-warning" (click)="onReinit()">Réinitialiser</button>
+    </div>
+  </div>
+</div>
